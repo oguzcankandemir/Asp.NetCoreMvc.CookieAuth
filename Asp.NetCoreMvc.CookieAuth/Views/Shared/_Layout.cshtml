@@ -35,6 +35,10 @@
                             {
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Administrator</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a asp-action="Index" asp-controller="User" class="dropdown-item">Users</a></li>
+                                        <li><a asp-action="Index" asp-controller="Member" class="dropdown-item">Members</a></li>
+                                    </ul>
                                 </li>
                             }
 

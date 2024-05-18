@@ -21,7 +21,11 @@ namespace Asp.NetCoreMvc.CookieAuth.Entities
         public string Password { get; set; }
 
         public bool Locked { get; set; } = false;
+
         public DateTime CreatedAt { get; set; } = DateTime.Now;
+
+        [StringLength(255)]
+        public string? ProfileImageFileName { get; set; } = "no-image.jpg";
 
         [Required]
         [StringLength(50)]

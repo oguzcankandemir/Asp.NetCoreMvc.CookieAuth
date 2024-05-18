@@ -16,3 +16,14 @@ html {
 body {
   margin-bottom: 60px;
 }
+.validation-summary-errors {
+    border: 1px solid red;
+    background-color: red;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+    .validation-summary-errors ul {
+        list-style-type: none;
+        color: #fff;
+    }

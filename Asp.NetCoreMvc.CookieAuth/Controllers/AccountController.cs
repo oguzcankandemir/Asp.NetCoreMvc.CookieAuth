@@ -153,7 +153,34 @@ namespace Asp.NetCoreMvc.CookieAuth.Controllers
             ProfileInfoLoader();
             return View("Profile");
         }
+        [HttpPost]
+        public IActionResult ProfileChangeImage([Required] IFormFile file)
+        {
+            if (ModelState.IsValid)
+            {
+                Guid userid = new Guid(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                User user = _databaseContext.Users.SingleOrDefault(x => x.Id == userid);
 
+                // p_guid.jpg
+                string fileName = $"p_{userid}.jpg";
+                //string fileName = $"p_{userid}.{file.ContentType.Split('/')[1]}";   // image/png   image/jpg
+
+                Stream stream = new FileStream($"wwwroot/uploads/{fileName}", FileMode.OpenOrCreate);
+
+                file.CopyTo(stream);
+
+                stream.Close();
+                stream.Dispose();
+
+                user.ProfileImageFileName = fileName;
+                _databaseContext.SaveChanges();
+
+                return RedirectToAction(nameof(Profile));
+            }
+
+            ProfileInfoLoader();
+            return View("Profile");
+        }
         public IActionResult Logout()
         {
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
