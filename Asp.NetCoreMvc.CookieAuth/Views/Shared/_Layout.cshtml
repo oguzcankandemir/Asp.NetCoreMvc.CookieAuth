@@ -33,8 +33,10 @@
                         {
                             if (User.IsInRole("admin"))
                             {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Administrator</a>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" asp-action="Index" asp-controller="Admin" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Administrator
+                                    </a>
                                     <ul class="dropdown-menu">
                                         <li><a asp-action="Index" asp-controller="User" class="dropdown-item">Users</a></li>
                                         <li><a asp-action="Index" asp-controller="Member" class="dropdown-item">Members</a></li>
@@ -60,7 +62,6 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register"><i class="fa-solid fa-user me-2"></i>Register</a>
                             </li>
                         }
-
                     </ul>
                 </div>
             </div>
